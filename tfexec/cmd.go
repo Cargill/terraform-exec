@@ -6,14 +6,11 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"strings"
-
-	"github.com/hashicorp/terraform-exec/internal/version"
 )
 
 const (
@@ -141,12 +138,12 @@ func (tf *Terraform) buildEnv(mergeEnv map[string]string) []string {
 	}
 
 	// always override user agent
-	ua := mergeUserAgent(
-		os.Getenv(appendUserAgentEnvVar),
-		tf.appendUserAgent,
-		fmt.Sprintf("HashiCorp-terraform-exec/%s", version.ModuleVersion()),
-	)
-	env[appendUserAgentEnvVar] = ua
+	// ua := mergeUserAgent(
+	// 	os.Getenv(appendUserAgentEnvVar),
+	// 	tf.appendUserAgent,
+	// 	fmt.Sprintf("HashiCorp-terraform-exec/%s", version.ModuleVersion()),
+	// )
+	// env[appendUserAgentEnvVar] = ua
 
 	// always override logging
 	if tf.logPath == "" {
