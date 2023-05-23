@@ -60,7 +60,7 @@ func (tf *Terraform) stateRepProviderCmd(ctx context.Context, source string, des
 		o.configureStateRepProvider(&c)
 	}
 
-	args := []string{"state", "replace-provider", "-no-color", "-auto-approve"}
+	args := []string{"state", "replace-provider", "-no-color", "-auto-approve", "--"}
 
 	// string opts: only pass if set
 	if c.backup != "" {
