@@ -31,6 +31,7 @@ func TestStateRepProviderCmd(t *testing.T) {
 			"-auto-approve",
 			"-lock-timeout=0s",
 			"-lock=true",
+			"--",
 			"testsource",
 			"testdestination",
 		}, nil, stateRepProviderCmd)
@@ -52,6 +53,7 @@ func TestStateRepProviderCmd(t *testing.T) {
 			"-state=teststate",
 			"-state-out=teststateout",
 			"-lock=false",
+			"--",
 			"testsrc",
 			"testdest",
 		}, nil, stateRepProviderCmd)
