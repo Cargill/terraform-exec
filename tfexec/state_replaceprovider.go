@@ -60,7 +60,7 @@ func (tf *Terraform) stateRepProviderCmd(ctx context.Context, source string, des
 		o.configureStateRepProvider(&c)
 	}
 
-	args := []string{"state", "replace-provider", "-no-color", "-auto-approve", "--"}
+	args := []string{"state", "replace-provider", "-no-color", "-auto-approve"}
 
 	// string opts: only pass if set
 	if c.backup != "" {
@@ -78,6 +78,9 @@ func (tf *Terraform) stateRepProviderCmd(ctx context.Context, source string, des
 
 	// boolean and numerical opts: always pass
 	args = append(args, "-lock="+strconv.FormatBool(c.lock))
+	
+	// signifies the end of command options, after which only positional arguments are accepted.
+	args = append(args, "--")
 
 	// positional arguments
 	args = append(args, source)
